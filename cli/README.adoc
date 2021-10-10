@@ -1,0 +1,6 @@
+= SpringBoot CLI demo
+
+== Lessons learnt
+
+* Very simple to bootstrap with Boot features + `ApplicationRunner`.
+* Native binary is not viable since binary is 38MB for a hello world. 
