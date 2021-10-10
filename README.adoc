@@ -1,0 +1,8 @@
+== Spring Boot test bench
+
+Projects to test & demo certain Spring Boot features.
+
+
+== Projects
+
+cli:: Native CLI tool.
