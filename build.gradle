@@ -1,23 +1,34 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
 plugins {
-	id 'org.springframework.boot' version '2.5.5'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+	id 'org.springframework.boot' apply false
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
-sourceCompatibility = '11'
 
-repositories {
-	mavenCentral()
-}
+subprojects {
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
 
-test {
-	useJUnitPlatform()
+	sourceCompatibility = '11'
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		// avoid use of 'io.spring.dependency-management' plugin
+		implementation enforcedPlatform(SpringBootPlugin.BOM_COORDINATES)
+		implementation 'org.springframework.boot:spring-boot-starter'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	}
+
+	test {
+		useJUnitPlatform()
+	}
+
 }
